@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free for Developers - The Ultimate Guide to Free Dev Tools</title>
+    <meta name="description" content="Discover 1000+ free services for developers. From cloud hosting to AI tools, find the best free tiers to build your next project.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --accent: #14b8a6;
+            --bg-light: #ffffff;
+            --bg-dark: #0f172a;
+            --text-light: #1e293b;
+            --text-dark: #f1f5f9;
+            --card-light: #f8fafc;
+            --card-dark: #1e293b;
+            --shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background: var(--bg-light);
+            transition: all 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        body.dark-mode {
+            background: var(--bg-dark);
+            color: var(--text-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 122, 162, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(138, 180, 248, 0.3) 0%, transparent 50%);
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.75rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(180deg);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        /* Search Bar */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+            background: var(--bg-light);
+            color: var(--text-light);
+        }
+
+        body.dark-mode .search-input {
+            background: var(--card-dark);
+            color: var(--text-dark);
+        }
+
+        .search-input:focus {
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        /* Category Filter */
+        .category-filter {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .category-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Service Cards Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background: var(--card-light);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.dark-mode .service-card {
+            background: var(--card-dark);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-light);
+        }
+
+        body.dark-mode .service-card h3 {
+            color: var(--text-dark);
+        }
+
+        .service-card p {
+            opacity: 0.8;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .learn-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: gap 0.3s ease;
+        }
+
+        .learn-more:hover {
+            gap: 1rem;
+        }
+
+        /* Featured Section */
+        .featured-section {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            border-radius: 30px;
+        }
+
+        body.dark-mode .featured-section {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(236, 72, 153, 0.2));
+        }
+
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 2rem;
+            padding: 2rem 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) transparent;
+        }
+
+        .carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .carousel::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .carousel::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .featured-card {
+            min-width: 350px;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            scroll-snap-align: start;
+            transition: transform 0.3s ease;
+        }
+
+        body.dark-mode .featured-card {
+            background: var(--card-dark);
+        }
+
+        .featured-card:hover {
+            transform: scale(1.05);
+        }
+
+        .featured-badge {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* Categories Overview */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 2rem;
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .category-card:nth-child(2n) {
+            background: linear-gradient(135deg, var(--secondary), #db2777);
+        }
+
+        .category-card:nth-child(3n) {
+            background: linear-gradient(135deg, var(--accent), #0d9488);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .category-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-count {
+            font-size: 2rem;
+            font-weight: bold;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 30px;
+            margin: 4rem 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--card-light);
+            margin-top: 4rem;
+        }
+
+        body.dark-mode footer {
+            background: var(--card-dark);
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                gap: 1rem;
+            }
+
+            .stat-card {
+                padding: 1rem 1.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-card {
+                min-width: 280px;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Dark Mode Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+        <span id="theme-icon">🌙</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Free for Developers</h1>
+            <p>Discover the ultimate collection of free services, tools, and platforms to supercharge your development journey</p>
+
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number">1000+</span>
+                    <span class="stat-label">Free Services</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">75+</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">1600+</span>
+                    <span class="stat-label">Contributors</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Search Section -->
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search for services, tools, or platforms..." onkeyup="searchServices()">
+        </div>
+
+        <!-- Category Filter -->
+        <div class="category-filter">
+            <button class="category-btn active" onclick="filterCategory('all')">All</button>
+            <button class="category-btn" onclick="filterCategory('cloud')">Cloud</button>
+            <button class="category-btn" onclick="filterCategory('database')">Database</button>
+            <button class="category-btn" onclick="filterCategory('ai')">AI/ML</button>
+            <button class="category-btn" onclick="filterCategory('hosting')">Hosting</button>
+            <button class="category-btn" onclick="filterCategory('cicd')">CI/CD</button>
+            <button class="category-btn" onclick="filterCategory('monitoring')">Monitoring</button>
+        </div>
+
+        <!-- Categories Overview -->
+        <section>
+            <h2 class="section-title">Explore Categories</h2>
+            <p class="section-subtitle">Browse our comprehensive collection of free developer resources</p>
+
+            <div class="categories-grid">
+                <div class="category-card" onclick="scrollToServices()">
+                    <h3>☁️ Cloud Providers</h3>
+                    <div class="category-count">5+</div>
+                    <p>AWS, GCP, Azure & more</p>
+                </div>
+                <div class="category-card" onclick="scrollToServices()">
+                    <h3>🗄️ Databases</h3>
+                    <div class="category-count">50+</div>
+                    <p>SQL, NoSQL, Serverless</p>
+                </div>
+                <div class="category-card" onclick="scrollToServices()">
+                    <h3>🚀 CI/CD Tools</h3>
+                    <div class="category-count">30+</div>
+                    <p>Automate your workflow</p>
+                </div>
+                <div class="category-card" onclick="scrollToServices()">
+                    <h3>🤖 AI & ML</h3>
+                    <div class="category-count">40+</div>
+                    <p>APIs, Models & Services</p>
+                </div>
+                <div class="category-card" onclick="scrollToServices()">
+                    <h3>📊 Monitoring</h3>
+                    <div class="category-count">25+</div>
+                    <p>Analytics & Logging</p>
+                </div>
+                <div class="category-card" onclick="scrollToServices()">
+                    <h3>🌐 Hosting</h3>
+                    <div class="category-count">35+</div>
+                    <p>Deploy your apps free</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Featured Services -->
+    <div class="featured-section">
+        <div class="container">
+            <h2 class="section-title">⭐ Featured Services</h2>
+            <p class="section-subtitle">Top picks from major cloud providers</p>
+
+            <div class="carousel">
+                <div class="featured-card">
+                    <span class="featured-badge">⚡ POPULAR</span>
+                    <div class="service-icon">☁️</div>
+                    <h3>Google Cloud Platform</h3>
+                    <p>Free tier includes App Engine, Cloud Functions, Cloud Storage, and more. Perfect for startups and side projects.</p>
+                    <div class="service-features">
+                        <span class="feature-tag">Cloud Functions</span>
+                        <span class="feature-tag">Cloud Run</span>
+                        <span class="feature-tag">BigQuery</span>
+                    </div>
+                    <a href="https://cloud.google.com/free" target="_blank" class="learn-more">
+                        Explore GCP →
+                    </a>
+                </div>
+
+                <div class="featured-card">
+                    <span class="featured-badge">🔥 TRENDING</span>
+                    <div class="service-icon">🔷</div>
+                    <h3>Cloudflare</h3>
+                    <p>Free CDN, DNS, DDoS protection, and Workers for serverless computing on the edge.</p>
+                    <div class="service-features">
+                        <span class="feature-tag">CDN</span>
+                        <span class="feature-tag">Workers</span>
+                        <span class="feature-tag">R2 Storage</span>
+                    </div>
+                    <a href="https://www.cloudflare.com/" target="_blank" class="learn-more">
+                        Explore Cloudflare →
+                    </a>
+                </div>
+
+                <div class="featured-card">
+                    <span class="featured-badge">💎 GENEROUS</span>
+                    <div class="service-icon">🟠</div>
+                    <h3>Oracle Cloud</h3>
+                    <p>Always-free tier includes 4 Arm-based Ampere cores and 24GB RAM. Incredibly generous limits!</p>
+                    <div class="service-features">
+                        <span class="feature-tag">4 ARM CPUs</span>
+                        <span class="feature-tag">24GB RAM</span>
+                        <span class="feature-tag">10TB Bandwidth</span>
+                    </div>
+                    <a href="https://www.oracle.com/cloud/free/" target="_blank" class="learn-more">
+                        Explore Oracle →
+                    </a>
+                </div>
+
+                <div class="featured-card">
+                    <span class="featured-badge">🚀 DEVELOPER FAVORITE</span>
+                    <div class="service-icon">📦</div>
+                    <h3>GitHub</h3>
+                    <p>Unlimited public and private repositories with CI/CD, hosting, and AI Copilot.</p>
+                    <div class="service-features">
+                        <span class="feature-tag">Actions</span>
+                        <span class="feature-tag">Pages</span>
+                        <span class="feature-tag">Packages</span>
+                    </div>
+                    <a href="https://github.com/" target="_blank" class="learn-more">
+                        Explore GitHub →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="container" id="services-section">
+        <h2 class="section-title">All Services</h2>
+        <p class="section-subtitle">Browse through our comprehensive collection</p>
+
+        <div class="services-grid" id="servicesGrid">
+            <!-- Services will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="container">
+        <div class="cta-section">
+            <h2>Want to Contribute?</h2>
+            <p>Help us grow this amazing list by adding more free services for developers</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/ripienaar/free-for-dev" target="_blank" class="btn btn-primary">
+                    View on GitHub
+                </a>
+                <a href="https://github.com/ripienaar/free-for-dev/pulls" target="_blank" class="btn btn-secondary">
+                    Submit a PR
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made with ❤️ by the developer community</p>
+        <p>This list is the result of Pull Requests, reviews, ideas, and work done by 1600+ people.</p>
+        <div class="social-links">
+            <a href="https://github.com/ripienaar/free-for-dev" target="_blank" class="social-link" title="GitHub">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // Sample services data
+        const services = [
+            {
+                name: 'Vercel',
+                category: 'hosting',
+                icon: '▲',
+                description: 'Deploy web apps instantly with zero configuration. Includes serverless functions and edge network.',
+                features: ['Serverless', 'Edge Network', 'Auto-scaling'],
+                url: 'https://vercel.com'
+            },
+            {
+                name: 'Netlify',
+                category: 'hosting',
+                icon: '🌐',
+                description: 'All-in-one platform for web development. Free tier includes 100GB bandwidth and serverless functions.',
+                features: ['CDN', 'Forms', 'Functions'],
+                url: 'https://netlify.com'
+            },
+            {
+                name: 'Supabase',
+                category: 'database',
+                icon: '⚡',
+                description: 'Open source Firebase alternative. PostgreSQL database with real-time subscriptions and authentication.',
+                features: ['PostgreSQL', 'Real-time', 'Auth'],
+                url: 'https://supabase.com'
+            },
+            {
+                name: 'PlanetScale',
+                category: 'database',
+                icon: '🌍',
+                description: 'Serverless MySQL platform. 5GB storage, 1 billion row reads/month free.',
+                features: ['MySQL', 'Branching', 'Serverless'],
+                url: 'https://planetscale.com'
+            },
+            {
+                name: 'Railway',
+                category: 'hosting',
+                icon: '🚂',
+                description: 'Deploy from GitHub in seconds. $5 free credit monthly for any project.',
+                features: ['GitHub Deploy', 'Databases', 'Templates'],
+                url: 'https://railway.app'
+            },
+            {
+                name: 'Render',
+                category: 'hosting',
+                icon: '🎨',
+                description: 'Cloud platform for apps and websites. Free tier includes web services, PostgreSQL, and Redis.',
+                features: ['Docker', 'PostgreSQL', 'Redis'],
+                url: 'https://render.com'
+            },
+            {
+                name: 'GitHub Actions',
+                category: 'cicd',
+                icon: '⚙️',
+                description: 'Automate workflows with 2,000 free minutes/month for private repos. Unlimited for public repos.',
+                features: ['CI/CD', 'Workflows', 'Free for OSS'],
+                url: 'https://github.com/features/actions'
+            },
+            {
+                name: 'CircleCI',
+                category: 'cicd',
+                icon: '🔵',
+                description: 'CI/CD platform with 6,000 free build minutes per month and unlimited users.',
+                features: ['Docker', 'Workflows', 'Orbs'],
+                url: 'https://circleci.com'
+            },
+            {
+                name: 'OpenAI',
+                category: 'ai',
+                icon: '🤖',
+                description: 'GPT-4 and DALL-E APIs. $5 free credit for new users to experiment.',
+                features: ['GPT-4', 'DALL-E', 'Embeddings'],
+                url: 'https://openai.com'
+            },
+            {
+                name: 'Hugging Face',
+                category: 'ai',
+                icon: '🤗',
+                description: 'Free access to thousands of AI models. Host models and datasets for free.',
+                features: ['Models', 'Datasets', 'Spaces'],
+                url: 'https://huggingface.co'
+            },
+            {
+                name: 'Sentry',
+                category: 'monitoring',
+                icon: '🔍',
+                description: 'Error tracking and performance monitoring. 5,000 events per month free.',
+                features: ['Error Tracking', 'Performance', 'Releases'],
+                url: 'https://sentry.io'
+            },
+            {
+                name: 'LogRocket',
+                category: 'monitoring',
+                icon: '📹',
+                description: 'Session replay and error tracking. 1,000 sessions/month free.',
+                features: ['Session Replay', 'Logging', 'Performance'],
+                url: 'https://logrocket.com'
+            },
+            {
+                name: 'MongoDB Atlas',
+                category: 'database',
+                icon: '🍃',
+                description: 'Managed MongoDB with 512MB storage free forever.',
+                features: ['NoSQL', 'Cloud Hosted', 'Serverless'],
+                url: 'https://mongodb.com/atlas'
+            },
+            {
+                name: 'Firebase',
+                category: 'database',
+                icon: '🔥',
+                description: 'Google\'s backend platform with real-time database, auth, and hosting.',
+                features: ['Real-time DB', 'Auth', 'Hosting'],
+                url: 'https://firebase.google.com'
+            },
+            {
+                name: 'Fly.io',
+                category: 'hosting',
+                icon: '✈️',
+                description: 'Run full-stack apps globally. Generous free tier with shared CPUs and 3GB storage.',
+                features: ['Global', 'Docker', 'Edge'],
+                url: 'https://fly.io'
+            },
+            {
+                name: 'Cloudinary',
+                category: 'cloud',
+                icon: '☁️',
+                description: 'Image and video management in the cloud. 25GB storage and 25GB bandwidth free.',
+                features: ['Images', 'Videos', 'Transformations'],
+                url: 'https://cloudinary.com'
+            },
+            {
+                name: 'AWS Lambda',
+                category: 'cloud',
+                icon: '🔶',
+                description: 'Run code without servers. 1 million free requests per month.',
+                features: ['Serverless', 'Auto-scale', 'Pay per use'],
+                url: 'https://aws.amazon.com/lambda'
+            },
+            {
+                name: 'Upstash',
+                category: 'database',
+                icon: '⚡',
+                description: 'Serverless Redis and Kafka. 10,000 commands per day free.',
+                features: ['Redis', 'Kafka', 'Serverless'],
+                url: 'https://upstash.com'
+            }
+        ];
+
+        // Populate services grid
+        function populateServices(filteredServices = services) {
+            const grid = document.getElementById('servicesGrid');
+            grid.innerHTML = filteredServices.map(service => `
+                <div class="service-card" data-category="${service.category}">
+                    <div class="service-icon">${service.icon}</div>
+                    <h3>${service.name}</h3>
+                    <p>${service.description}</p>
+                    <div class="service-features">
+                        ${service.features.map(f => `<span class="feature-tag">${f}</span>`).join('')}
+                    </div>
+                    <a href="${service.url}" target="_blank" class="learn-more">
+                        Learn more →
+                    </a>
+                </div>
+            `).join('');
+        }
+
+        // Filter by category
+        function filterCategory(category) {
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const filtered = category === 'all'
+                ? services
+                : services.filter(s => s.category === category);
+
+            populateServices(filtered);
+        }
+
+        // Search functionality
+        function searchServices() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = services.filter(s =>
+                s.name.toLowerCase().includes(query) ||
+                s.description.toLowerCase().includes(query) ||
+                s.features.some(f => f.toLowerCase().includes(query))
+            );
+            populateServices(filtered);
+        }
+
+        // Dark mode toggle
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            body.classList.toggle('dark-mode');
+            icon.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+        }
+
+        // Scroll to services
+        function scrollToServices() {
+            document.getElementById('services-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.getElementById('theme-icon').textContent = '☀️';
+            }
+
+            // Populate services
+            populateServices();
+
+            // Smooth scroll for all internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
